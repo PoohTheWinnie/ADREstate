@@ -4,6 +4,8 @@ const bcrypt = require('bcryptjs');
 const config = require('config');
 const jwt = require('jsonwebtoken');
 const userStatuses = require("../middleware/userStatuses");
+const auth = require("../middleware/auth");
+
 
 //User Model
 const User = require('../models/User');
@@ -65,5 +67,21 @@ router.post('/', (req, res) => {
             })
         })
     });
+
+router.get('/:userId', auth, (req, res) => {
+    console.log(req.params);
+    if (!req.params.userId) {
+        return res.status(400).json({msg: 'User does not exist'});
+    }
+    
+    User.findById(req.params.userId, function (err, user) {
+        if (!user) {
+            return res.status(400).json({msg: 'User does not exist'});
+        }
+        console.log("get User"); 
+        console.log(user);
+        return res.json(user);
+    });
+});
 
 module.exports = router;

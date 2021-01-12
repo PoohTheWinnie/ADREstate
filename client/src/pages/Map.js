@@ -51,7 +51,7 @@ class MyMap extends Component{
         this.handleSubmit = this.handleSubmit.bind(this);
         this.onChange = this.onChange.bind(this);
     }
-    async componentDidMount(){
+    componentDidMount(){
         this.props.loadHouses()
             .then(data => {
                 this.setState({
@@ -143,7 +143,7 @@ class MyMap extends Component{
             height: "78vh",
             width: "100%",
         }
-        const halfMapStyel = {
+        const halfMapStyle = {
             height: "78vh",
             width: "50%",
         }

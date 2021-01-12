@@ -161,11 +161,11 @@ class SignUp extends Component {
                         {/* <Label for="UserType">User Type</Label> */}
                             <div className="UserType">
                                 <div className="UserTypeSelection">
-                                    <IconButton style={{color: this.setColor(0)}} onClick={() => {this.handleUserType("Student", 0)}}><Icon value="Student" icon={houseUser} className="UserIcon"/></IconButton>
+                                    <IconButton style={{color: this.setColor(0)}} onClick={() => {this.handleUserType("Home Owner", 0)}}><Icon value="Home Owner" icon={houseUser} className="UserIcon"/></IconButton>
                                     <CardText className="UserTypeText">Home Owner</CardText>
                                 </div>
                                 <div className="UserTypeSelection">
-                                    <IconButton style={{color: this.setColor(1)}} onClick={() => {this.handleUserType("Employer", 1)}}><Icon value = "Employer" icon={roundBusinessCenter} className="UserIcon"/></IconButton>
+                                    <IconButton style={{color: this.setColor(1)}} onClick={() => {this.handleUserType("Appraiser", 1)}}><Icon value = "Appraiser" icon={roundBusinessCenter} className="UserIcon"/></IconButton>
                                     <CardText className="UserTypeText">Appraiser</CardText>
                                 </div>
                             </div>
