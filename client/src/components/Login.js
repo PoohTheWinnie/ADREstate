@@ -15,17 +15,12 @@ import { login } from '../actions/authActions';
 import { clearErrors } from '../actions/errorActions';
 
 class Login extends Component {
-    // state = {
-    //     password: '',
-    //     msg: null
-    // };
-
-    // static propTypes = {
-    //     isAuthenticated: PropTypes.bool,
-    //     error: PropTypes.object.isRequired,
-    //     login: PropTypes.func.isRequired,
-    //     clearErrors: PropTypes.func.isRequired
-    // };
+    static propTypes = {
+        isAuthenticated: PropTypes.bool,
+        error: PropTypes.object.isRequired,
+        login: PropTypes.func.isRequired,
+        clearErrors: PropTypes.func.isRequired
+    };
     constructor(props){
         super(props);
         this.state = {

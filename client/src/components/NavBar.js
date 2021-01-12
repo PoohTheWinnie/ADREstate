@@ -13,7 +13,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import Logout from './Logout.js';
+import Logout from './logout.js';
 
 
 class NavBar extends Component {

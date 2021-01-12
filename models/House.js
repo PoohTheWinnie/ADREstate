@@ -23,15 +23,17 @@ const HouseSchema = new Schema({
     },
     date:{
         type: String,
+        default: Date.now
     },
-    // postedBy:{
-    //     type: String
-    // },
+    status:{
+        type: Boolean
+    },
+    value: {
+        type: Number
+    },
+    postedBy:{
+        type: String
+    },
 });
-
-// UserSchema.methods.setStatus = function(newStatus) {
-//     this.status = newStatus;
-//     this.save();
-// };
 
 module.exports = House = mongoose.model('house', HouseSchema);

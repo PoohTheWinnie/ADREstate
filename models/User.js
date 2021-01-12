@@ -20,13 +20,16 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
-    date:{
-        type: Date,
-        default: Date.now
+    bio: {
+        type: String
     },
     userType:{
         type: String,
         required: true,
+    },
+    image:{
+        data: Buffer,
+        contentType: String
     }
 });
 

@@ -24,10 +24,10 @@ import {
 import { connect } from 'react-redux';
 import axios from "axios";
 
-import { Icon } from "../Leaflet/Configurations";
-import NavBar from '../components/NavBar';
-import Footer from '../components/Footer';
-import { registerHouse, loadHouses } from '../actions/houseActions';
+import { Icon } from "../components/markerIcon";
+import NavBar from '../components/navBar';
+import Footer from '../components/footer';
+import { registerHouse, getHouses } from '../actions/houseActions';
 import { clearErrors } from "../actions/errorActions";
 import "leaflet/dist/leaflet.css";
 
@@ -52,7 +52,7 @@ class MyMap extends Component{
         this.onChange = this.onChange.bind(this);
     }
     componentDidMount(){
-        this.props.loadHouses()
+        this.props.getHouses()
             .then(data => {
                 this.setState({
                     ...this.state,
@@ -204,4 +204,4 @@ const mapStateToProps =  state => ({
     error: state.error
 });
 
-export default connect(mapStateToProps, { registerHouse, loadHouses, clearErrors })(MyMap);
+export default connect(mapStateToProps, { registerHouse, getHouses, clearErrors })(MyMap);

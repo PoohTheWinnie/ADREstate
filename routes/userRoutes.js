@@ -8,7 +8,7 @@ const auth = require("../middleware/auth");
 
 
 //User Model
-const User = require('../models/User');
+const User = require('../models/user');
 
 // @route POST api/users
 // @desc Register new user
@@ -83,5 +83,36 @@ router.get('/:userId', auth, (req, res) => {
         return res.json(user);
     });
 });
+
+router.put('/:userId', (req, res) => {
+    console.log("req params"); 
+    console.log(req.params);
+    if (!req.params.userId) {
+        return res.status(400).json({msg: 'User does not exist'});
+    }
+
+    console.log(req.body);
+    console.log("at put"); 
+    console.log(req.user)
+    const { avatar, firstName, lastName, email, companyId,  /*, userId */ } = req.body;
+    //const userId = req.user.id;
+
+    console.log("updating"); 
+    
+
+    Employer.findByIdAndUpdate(req.params.userId, {
+        avatar,
+        companyId,
+        email,
+        firstName,
+        lastName,
+        
+    }, (err) => {
+        console.log(err); 
+        console.log("updated"); 
+    } )
+    
+});
+
 
 module.exports = router;

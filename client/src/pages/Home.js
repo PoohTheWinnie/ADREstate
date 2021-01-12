@@ -20,8 +20,8 @@ import Boston from "../Images/Boston.png";
 import LosAngeles from "../Images/Los Angeles.png";
 import London from "../Images/London.png";
 import MapSmall from "../Images/MapSmall.png";
-import NavBar from '../components/NavBar';
-import Footer from '../components/Footer';
+import NavBar from '../components/navBar';
+import Footer from '../components/footer';
 import LoginModal from "../components/loginModal";
 
 

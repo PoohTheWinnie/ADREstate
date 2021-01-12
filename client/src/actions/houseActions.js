@@ -33,10 +33,20 @@ export const registerHouse = function({strAdd, lat, lng, pictureLink, descriptio
     }
 }
 
-export const loadHouses = function () {
+export const getHouses = function () {
     return function (dispatch, getState) {
         console.log("Test House Actions!")
         return axios.get('/api/house', tokenConfig(getState))
+            .then(res => res.data)
+            .catch(function(err) {
+                dispatch(returnErrors(err.response.data, err.response.status));
+            });
+    }
+}
+
+export const getHousesInd = function (userId) {
+    return function (dispatch, getState) {
+        return axios.get(`/api/companies/${userId}`, tokenConfig(getState))
             .then(res => res.data)
             .catch(function(err) {
                 dispatch(returnErrors(err.response.data, err.response.status));

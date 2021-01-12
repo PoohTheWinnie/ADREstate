@@ -5,8 +5,8 @@ import {
 } from 'reactstrap';
 import ReactCardFlip from 'react-card-flip';
 
-import Login from "./Login";
-import Signup from "./SignUp";
+import Login from "./login";
+import Signup from "./signup";
 
 class LoginModal extends Component{
     constructor(props) {

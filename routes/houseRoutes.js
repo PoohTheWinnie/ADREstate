@@ -2,7 +2,7 @@
 const express = require("express");
 const router = express.Router();
 
-const House = require("../models/House");
+const House = require("../models/house");
 const auth = require("../middleware/auth");
 
 router.post("/", auth, (req, res) => {
@@ -48,6 +48,19 @@ router.get('/', auth, (req, res) => {
             return res.json(result);
         }
       });
+});
+
+router.get("/:userId", auth, (req, res) => {
+    if (!req.params.userId) {
+        return res.status(400).json({msg: "User does not exist"});
+    }
+    
+    House.find({ postedBy: req.params.userId }, function (err, houses) {
+        if (houses == null) {
+            return res.status(404).json({msg: "User does not exist"});
+        }
+        return res.json(houses);
+    });
 });
 
 module.exports = router;

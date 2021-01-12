@@ -5,9 +5,9 @@ import store from './store';
 
 import { loadUser } from "./actions/authActions";
 import ProductRegistration from "./pages/productRegistration";
-import Home from "./pages/Home";
-import Map from "./pages/Map";
-import Profile from "./pages/Profile";
+import Home from "./pages/home";
+import Map from "./pages/map";
+import Profile from "./pages/profile";
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
