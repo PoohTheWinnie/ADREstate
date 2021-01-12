@@ -1,0 +1,8 @@
+const userStatuses = {
+    REGISTRATION_REQUIRED: "REGISTRATION_REQUIRED",
+    REGISTERED: "REGISTERED",
+    PROVISIONED: "PROVISIONED",
+    DEACTIVATED: "DEACTIVATED"
+};
+
+module.exports = userStatuses;

@@ -1,0 +1,248 @@
+/*Default Specifications*/
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap');
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  color: #1e1e1e;
+}
+
+h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+p {
+  font-family: 'Montserrat', sans-serif;  
+  color: #1e1e1e;
+}
+
+/*Navigation Bar*/
+.nav-div {
+  background: #c8c7c6;
+  margin: 0;
+  border: 0;
+}
+
+.nav-item {
+  margin-right: 20px;
+  color: #5c5c5b;
+}
+
+.ProductName{
+  color: #0967c2;
+}
+
+.SectionNavBar{
+  background-color: white;
+}
+
+.NavBar{
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/*Footer*/
+.footer-nav h4 {
+  width: 200px;
+  font-size: 20px;
+  display: inline-block;
+  padding-bottom: 5px;
+  position: relative;
+  padding-left: 16px;
+}
+
+.footer-nav h4:before {
+  content: "";
+  position: absolute;
+  width: 43%;
+  height: 1px;
+  bottom: 0;
+  border-bottom: 3px solid #D91E28;
+}
+
+.footer-nav .terms {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+}
+
+.social-icons {
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.social-icons .nav-link .fa-facebook-f,
+.social-icons .nav-link .fa-linkedin-in,
+.social-icons .nav-link .fa-github,
+.social-icons .nav-link .fa-youtube,
+.social-icons .nav-link .fa-instagram {
+    color: #0967c2;
+    font-size: 35px;
+    margin-top: 10px;
+}
+
+.social-icons .nav-link {
+    display: inline;
+    text-align: center;
+    padding-left: 10px;
+}
+
+/*Home*/
+.Image{
+  width: 100%; 
+  height: 50%;
+}
+.SectionSignLog{
+  background-color: white;
+  padding: 30px 0;
+}
+
+.SignLog{
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+.ImageSign{
+  width: 50%;
+  margin: auto;
+}
+
+.Modal{
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.FrontSide Button{
+  color: #0967c2
+}
+
+.Back{
+  display: inline-block;
+  width: 100%;
+}
+
+.SectionCities{
+  background-color:#faf9f7;
+  padding: 30px 0;
+}
+
+.Cities{
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ListCities{
+  margin-left: 650px;
+}
+
+.City{
+  border-radius: 15px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  background: #e6e5e4;
+  color: #5c5c5b;
+}
+
+.SectionFeatures{
+  background-color: #f1ece6;
+  padding: 30px 0;
+}
+
+.Features{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ListFeatures{
+  margin: 0;
+}
+
+.FeatureIcon{
+  width: 8em;
+  height: 8em;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 580px;
+}
+
+
+/*Login*/
+.LoginSubmit{
+  width: 100%;
+}
+
+.LoginNav{
+  border-radius: 30px;
+  border: 2px solid #0967c2;
+  text-align: center;
+  background: white;
+  color: #0967c2; 
+  padding: 10px;
+  width: 100px;
+  height: 60px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.LoginNav h4{
+  font-weight: 500;
+}
+
+/*Sign Up*/
+.UserType {
+  display: flex;
+  flex-direction: row;
+}
+
+.UserTypeSelection{
+  width: 50%;
+}
+
+.UserTypeText{
+  text-align: center;
+  
+}
+.UserIcon {
+  margin: 0px 27px;
+  width: 5em;
+  height: 5em;
+}
+
+.SignUpSubmit{
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+/*Map*/
+.Map{
+  height: 78vh;
+  width: 100%;
+}
