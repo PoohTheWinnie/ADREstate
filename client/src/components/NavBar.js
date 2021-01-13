@@ -22,7 +22,8 @@ class NavBar extends Component {
     }
 
     static propTypes = {
-        auth: PropTypes.object.isRequired
+        auth: PropTypes.object.isRequired,
+        user: PropTypes.object.isRequired
     }
 
     toggle = () => {
@@ -32,8 +33,9 @@ class NavBar extends Component {
     }
 
     render() {
-        const { isAuthenticated } = this.props.auth;
-
+        const { isAuthenticated, user } = this.props.auth;
+        console.log(this.props.auth.user);
+        console.log(user);
         const authLinks = (
             <Fragment>              
                 <NavItem>
@@ -80,7 +82,8 @@ class NavBar extends Component {
 }
 
 const mapStateToProps = state => ({
-    auth: state.auth
+    auth: state.auth,
+    user: state.auth.user
 });
 
 export default connect(mapStateToProps, null)(NavBar);

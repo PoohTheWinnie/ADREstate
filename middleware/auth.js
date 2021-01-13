@@ -6,15 +6,15 @@ function auth(req, res, next) {
     console.log(token, " ", config.get('jwtSecret'));
 
     // Check for token
-    // if(!token)
-    //     return res.status(401).json({ msg: 'No token, authorization denied' });
+    if(!token)
+        return res.status(401).json({ msg: 'No token, authorization denied' });
 
     try{
         //Verify token
-        // const decoded = jwt.verify(token, config.get('jwtSecret'));
+        const decoded = jwt.verify(token, config.get('jwtSecret'));
 
         //Add user from payload
-        // req.user = decoded;
+        req.user = decoded;
         next();
     } catch(e) {
         res.status(400).json({ msg: 'Token is not valid' });

@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { Icon, InlineIcon } from '@iconify/react';
 import personCircle from '@iconify-icons/bi/person-circle';
 import Image from 'react-bootstrap/Image';
+import PropTypes from "prop-types";
 import {
     Container,
     Card,
@@ -20,57 +21,71 @@ import {
 } from 'reactstrap';
 
 import profile from "../Images/Winston Cai.png"
-import { getUser } from "../actions/userActions";
+import { getUser, updateUser } from "../actions/userActions";
+import { getHousesInd } from "../actions/houseActions";
 import NavBar from '../components/navBar';
 import Footer from '../components/footer';
 
 class Profile extends Component{
+    static propTypes = {
+        auth: PropTypes.object.isRequired,
+        user: PropTypes.object.isRequired
+    }
     constructor(props) {
         super(props);
         this.state = {
-            userId: "",
             name: "",
             email: "",
             role: "",
             bio: "",
             houses: [],
+            image: null,
             editMode: false,
-            hasImage: null,
         }   
         this.onChange = this.onChange.bind(this);
         this.onClick = this.onClick.bind(this);
         this.saveEdit = this.saveEdit.bind(this);
-        this.uploadPhoto = this.uploadPhoto.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-
     componentDidMount() {
-        // const id = this.props.match.params.id;
-        // this.props.getUser(id)
-        //     .then(res => {
-        //         if(!res){
-        //             throw new Error("Server Error");
-        //         }
-        //         this.setState({
-        //             name: res.name,
-        //             email: res.email,
-        //             role: res.userType,
-        //         })
-        //     })
-        this.setState({
-            name: "Winston Cai",
-            email: "winston.x.cai@gmail.com",
-            role: "Home Seller",
-            bio: "I am fascinated by the applications of technology to improve the quailty of our lives and expand our scientific boundaries.  I enjoy applying my programming skills to complete impactful projects!  Besides coding, I also like pondering metaphysical topics, traveling the world, and cooking.",
-            houses: [{
-                date: "01/12/15",
-                address: "1755 York Ave, New York, New York, 10128",
-                status: true,
-                value: 500000,
-                description: "Absolutely stunning home"
-            }],
-            hasImage: true,
-        })
+        const userId = this.props.user.user.id;
+        this.props.getUser(userId)
+            .then(res => {
+                if(!res){
+                    throw new Error("Server Error");
+                }
+                this.setState({
+                    name: res.name,
+                    email: res.email,
+                    role: res.userType,
+                    bio: res.bio,
+                    image: res.image
+                })
+            })
+        this.props.getHousesInd(userId)
+            .then(res => {
+                if(!res){
+                    throw new Error("Server Error");
+                }
+                this.setState({
+                    ...this.state,
+                    res
+                })
+            })
+        // this.setState({
+        //     name: "Winston Cai",
+        //     email: "winston.x.cai@gmail.com",
+        //     role: "Home Seller",
+        //     bio: "I am fascinated by the applications of technology to improve the quailty of our lives and expand our scientific boundaries.  I enjoy applying my programming skills to complete impactful projects!  Besides coding, I also like pondering metaphysical topics, traveling the world, and cooking.",
+        //     houses: [{
+        //         date: "01/12/15",
+        //         address: "1755 York Ave, New York, New York, 10128",
+        //         status: true,
+        //         value: 500000,
+        //         description: "Absolutely stunning home"
+        //     }],
+        //     hasImage: true,
+        // })
     }
 
     onChange(e){
@@ -87,15 +102,27 @@ class Profile extends Component{
         this.setState({
             editMode: false
         });
-
+        const newUser = {
+            name: this.state.name,
+            email: this.state.email,
+            role: this.state.role,
+            bio: this.state.bio,
+            image: this.state.image,
+        }
+        this.props.updateUser(newUser);
+        this.handleSubmit(e);
     }
-    uploadPhoto(e){
-
+    handleSubmit(e){
+        e.preventDefault();
+        const newUser = {
+            name: this.state.name,
+            email: this.state.email,
+            role: this.state.role,
+            bio: this.state.bio,
+            image: this.state.image,
+        }
+        this.props.updateUser(newUser);
     }
-    handleSubmit(event){
-        event.preventDefault();
-    }
-
     render(){   
         let editModeF = (
             <Card style={{ borderRadius: 15, backgroundColor: '#faf9f7', borderColor: "#faf9f7" }} className = "description">
@@ -185,7 +212,8 @@ class Profile extends Component{
 
 const mapStateToProps = state => ({
     isAuthenticated: state.auth.isAuthenticated,
-    error: state.error
+    error: state.error,
+    user: state.auth.user
 });
 
-export default connect(mapStateToProps, { getUser })(withRouter(Profile));
+export default connect(mapStateToProps, { getUser, getHousesInd })(withRouter(Profile));

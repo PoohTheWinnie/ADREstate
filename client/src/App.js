@@ -28,7 +28,7 @@ class App extends Component{
             <Route exact path="/Map">
                 <Map/>
             </Route>
-            <Route exact path="/Profile/:id">
+            <Route exact path="/Profile/:userId">
                 <Profile/>
             </Route>
             <Route exact path="/Product">

@@ -32,6 +32,10 @@ import { clearErrors } from "../actions/errorActions";
 import "leaflet/dist/leaflet.css";
 
 class MyMap extends Component{
+    static propTypes = {
+        auth: PropTypes.object.isRequired,
+        user: PropTypes.object.isRequired
+    }
     constructor(props){
         super(props);
         this.state = {
@@ -116,7 +120,8 @@ class MyMap extends Component{
         const strAdd = this.state.strAdd;
         const pictureLink = this.state.pictureLink;
         const description = this.state.description;
-        this.props.registerHouse({strAdd, lat, lng, pictureLink, description});
+        const userId = this.props.user.user.id;
+        this.props.registerHouse({strAdd, lat, lng, pictureLink, description, userId});
 
         var dateObj = new Date();
         var month = dateObj.getUTCMonth() + 1; 
@@ -201,7 +206,8 @@ class MyMap extends Component{
 
 const mapStateToProps =  state => ({
     isAuthenticated: state.auth.isAuthenticated,
-    error: state.error
+    error: state.error,
+    user: state.auth.user
 });
 
 export default connect(mapStateToProps, { registerHouse, getHouses, clearErrors })(MyMap);

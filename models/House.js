@@ -26,7 +26,8 @@ const HouseSchema = new Schema({
         default: Date.now
     },
     status:{
-        type: Boolean
+        type: Boolean,
+        default: false
     },
     value: {
         type: Number
@@ -34,6 +35,9 @@ const HouseSchema = new Schema({
     postedBy:{
         type: String
     },
+    reviewedBy:{
+        type: String
+    }
 });
 
 module.exports = House = mongoose.model('house', HouseSchema);

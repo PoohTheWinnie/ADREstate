@@ -6,7 +6,7 @@ const House = require("../models/house");
 const auth = require("../middleware/auth");
 
 router.post("/", auth, (req, res) => {
-    const {strAdd, lat, lng, pictureLink, description} = req.body;
+    const {strAdd, lat, lng, pictureLink, description, userId} = req.body;
 
     var dateObj = new Date();
     var month = dateObj.getUTCMonth() + 1; 
@@ -20,6 +20,7 @@ router.post("/", auth, (req, res) => {
         longitude: lng,
         pictureLink: pictureLink,
         description: description,
+        postedBy: userId,
         date: newdate,
     });
 

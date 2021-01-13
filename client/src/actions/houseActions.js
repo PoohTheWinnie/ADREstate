@@ -14,14 +14,14 @@ import {
     REGISTER_FAIL
 } from "./types";
 
-export const registerHouse = function({strAdd, lat, lng, pictureLink, description}) {
+export const registerHouse = function({strAdd, lat, lng, pictureLink, description, userId}) {
     return async function (dispatch, getState) {
         const config = {
             headers: {
                 'Content-Type': 'application/json'
             }
         }
-        const body = JSON.stringify({strAdd, lat, lng, pictureLink, description});
+        const body = JSON.stringify({strAdd, lat, lng, pictureLink, description, userId});
         console.log(body);
         return await axios.post('/api/house', body, tokenConfig(getState))
             .then(res => res.data)
