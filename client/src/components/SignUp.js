@@ -10,7 +10,6 @@ import {
     FormGroup,
     Label,
     Input,
-    NavLink,
     Alert,
     FormFeedback, //added
     FormText,
@@ -18,14 +17,11 @@ import {
     CardText // added
 } from 'reactstrap';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import { register } from '../actions/authActions';
 import { clearErrors } from '../actions/errorActions';
-import { login } from '../actions/authActions';
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckSquare, faCoffee } from '@fortawesome/fontawesome-free-solid';
 
 library.add(fab, faCheckSquare, faCoffee);
@@ -165,7 +161,7 @@ class SignUp extends Component {
                                     <CardText className="UserTypeText">Home Owner</CardText>
                                 </div>
                                 <div className="UserTypeSelection">
-                                    <IconButton style={{color: this.setColor(1)}} onClick={() => {this.handleUserType("Appraiser", 1)}}><Icon value = "Appraiser" icon={roundBusinessCenter} className="UserIcon"/></IconButton>
+                                    <IconButton style={{color: this.setColor(1)}} onClick={() => {this.handleUserType("Appraiser", 1)}}><Icon value="Appraiser" icon={roundBusinessCenter} className="UserIcon"/></IconButton>
                                     <CardText className="UserTypeText">Appraiser</CardText>
                                 </div>
                             </div>

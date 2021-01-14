@@ -1,10 +1,11 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from "react-redux";
-import { Icon, InlineIcon } from '@iconify/react';
+import { Icon } from '@iconify/react';
 import personCircle from '@iconify-icons/bi/person-circle';
 import Image from 'react-bootstrap/Image';
 import PropTypes from "prop-types";
+import axios from "axios";
 import {
     Container,
     Card,
@@ -14,21 +15,17 @@ import {
     CardSubtitle,
     Button,
     Input,
-    FormGroup,
     CardGroup,
-    Row,
-    Col,
 } from 'reactstrap';
 
-import profile from "../Images/Winston Cai.png"
 import { getUser, updateUser } from "../actions/userActions";
 import { getHousesInd } from "../actions/houseActions";
+import { getImage } from "../actions/imageActions";
 import NavBar from '../components/navBar';
 import Footer from '../components/footer';
 
 class Profile extends Component{
     static propTypes = {
-        auth: PropTypes.object.isRequired,
         user: PropTypes.object.isRequired
     }
     constructor(props) {
@@ -39,16 +36,18 @@ class Profile extends Component{
             role: "",
             bio: "",
             houses: [],
-            image: null,
+            uploadImage: null,
+            image: false,
             editMode: false,
         }   
         this.onChange = this.onChange.bind(this);
         this.onClick = this.onClick.bind(this);
         this.saveEdit = this.saveEdit.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.uploadImage = this.uploadImage.bind(this);
     }
     componentDidMount() {
         const userId = this.props.user.user.id;
+        console.log(userId);
         this.props.getUser(userId)
             .then(res => {
                 if(!res){
@@ -59,35 +58,29 @@ class Profile extends Component{
                     email: res.email,
                     role: res.userType,
                     bio: res.bio,
-                    image: res.image
                 })
             })
         this.props.getHousesInd(userId)
+            .then(houses => {
+                if(!houses){
+                    throw new Error("Server Error");
+                }
+                this.setState({
+                    ...this.state,
+                    houses
+                })
+            })
+        this.props.getImage(userId)
             .then(res => {
                 if(!res){
                     throw new Error("Server Error");
                 }
                 this.setState({
-                    ...this.state,
-                    res
+                    // image: URL.createObjectURL(`../${res.image}`)
+                    image: res.image
                 })
             })
-        // this.setState({
-        //     name: "Winston Cai",
-        //     email: "winston.x.cai@gmail.com",
-        //     role: "Home Seller",
-        //     bio: "I am fascinated by the applications of technology to improve the quailty of our lives and expand our scientific boundaries.  I enjoy applying my programming skills to complete impactful projects!  Besides coding, I also like pondering metaphysical topics, traveling the world, and cooking.",
-        //     houses: [{
-        //         date: "01/12/15",
-        //         address: "1755 York Ave, New York, New York, 10128",
-        //         status: true,
-        //         value: 500000,
-        //         description: "Absolutely stunning home"
-        //     }],
-        //     hasImage: true,
-        // })
     }
-
     onChange(e){
         this.setState({
             [e.target.name]: e.target.value
@@ -103,27 +96,49 @@ class Profile extends Component{
             editMode: false
         });
         const newUser = {
+            id: this.props.user.user.id,
             name: this.state.name,
-            email: this.state.email,
             role: this.state.role,
             bio: this.state.bio,
-            image: this.state.image,
         }
+        const userId = this.props.user.user.id;
+        console.log(userId);
         this.props.updateUser(newUser);
-        this.handleSubmit(e);
-    }
-    handleSubmit(e){
         e.preventDefault();
-        const newUser = {
-            name: this.state.name,
-            email: this.state.email,
-            role: this.state.role,
-            bio: this.state.bio,
-            image: this.state.image,
-        }
-        this.props.updateUser(newUser);
+    }
+    uploadImage(e) {
+        let imageFormObj = new FormData();
+        console.log("e target files");
+        console.log(e.target.files);
+        imageFormObj.append("type", "Profile");
+        imageFormObj.append("userId", this.props.user.user.id);
+        imageFormObj.append("imageData", e.target.files[0]);
+    
+        // stores a readable instance of 
+        // the image being uploaded using multer
+        this.setState({
+          uploadImage: URL.createObjectURL(e.target.files[0])
+        });
+    
+        axios.post("/api/image/", imageFormObj)
+            .then((data) => {
+                if (data.data.success) {
+                    console.log("Image has been successfully uploaded using multer");
+                    this.setState({
+                        image: this.state.uploadImage,
+                    });
+                }
+            })
+            .catch((err) => {
+                console.log("Error while uploading image using multer");
+                console.log(err);
+                this.setState({
+                    uploadImage: null
+                });
+            });
     }
     render(){   
+        console.log(this.state.image);
         let editModeF = (
             <Card style={{ borderRadius: 15, backgroundColor: '#faf9f7', borderColor: "#faf9f7" }} className = "description">
                 <CardBody>
@@ -161,15 +176,15 @@ class Profile extends Component{
                             <Card style={{ borderRadius: 15, backgroundColor: '#faf9f7' }} className = "profileCard">
                                 <CardGroup>
                                     <Card style={{ borderRadius: 15, backgroundColor: '#faf9f7', borderColor: "#faf9f7" }} className = "profile">
-                                        {this.state.hasImage ? (
+                                        {this.state.image != null ? (
                                             <div>
-                                                <Image src= {profile} className = "image" roundedCircle/>
-                                                <Button className="changePhoto" onClick={this.uploadPhoto} block>Change Photo</Button>
+                                                <Image src={require("../uploads/1610571317705Winston Cai.png")} className="image" roundedCircle/>
+                                                <Input type="file" id="image" name="image" value="" onChange={this.uploadImage} required/>
                                             </div>
                                         ) : (
                                             <div>
                                                 <Icon icon={personCircle} className="icon"/>
-                                                <Button className="uploadPhoto" onClick={this.uploadPhoto} block>Upload Photo</Button>
+                                                <Input type="file" id="image" name="image" value="" onChange={this.uploadImage} required/>
                                             </div>
                                         )}
                                     </Card>
@@ -201,6 +216,7 @@ class Profile extends Component{
                         </Container>
                         <br/>
                     </div>
+                    <profileImageModal/>
                 </div>
                 <div className="footer">
                     <Footer/>
@@ -216,4 +232,4 @@ const mapStateToProps = state => ({
     user: state.auth.user
 });
 
-export default connect(mapStateToProps, { getUser, getHousesInd })(withRouter(Profile));
+export default connect(mapStateToProps, { getUser, updateUser, getHousesInd, getImage })(withRouter(Profile));

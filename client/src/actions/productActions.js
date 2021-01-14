@@ -12,11 +12,6 @@ import { returnErrors } from './errorActions';
 
 export const registerProduct = function(product) {
     return async function (dispatch, getState) {
-        const config = {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }
         const body = JSON.stringify(product);
         console.log(body);
         console.log("Checkpoint Register Product");

@@ -3,7 +3,6 @@ import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import store from './store';
 
-import { loadUser } from "./actions/authActions";
 import ProductRegistration from "./pages/productRegistration";
 import Home from "./pages/home";
 import Map from "./pages/map";
@@ -14,9 +13,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 class App extends Component{
-  // componentDidMount(){
-  //   store.dispatch(loadUser());
-  // }
   render(){
     return(
       <Provider store={store}>

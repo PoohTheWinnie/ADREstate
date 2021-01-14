@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import {
-    Row,
     Col,
-    Button,
-    CardText,
 } from 'reactstrap';
 import Image from 'react-bootstrap/Image';
-import ReactCardFlip from 'react-card-flip';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Fade } from "react-slideshow-image";
@@ -15,11 +11,11 @@ import lawIcon from '@iconify-icons/whh/law';
 import mapIcon from '@iconify-icons/carbon/map'
 import 'react-slideshow-image/dist/styles.css';
 
-import NewYork from "../Images/New York.png";
-import Boston from "../Images/Boston.png";
-import LosAngeles from "../Images/Los Angeles.png";
-import London from "../Images/London.png";
-import MapSmall from "../Images/MapSmall.png";
+import NewYork from "../images/New York.png";
+import Boston from "../images/Boston.png";
+import LosAngeles from "../images/Los Angeles.png";
+import London from "../images/London.png";
+import MapSmall from "../images/MapSmall.png";
 import NavBar from '../components/navBar';
 import Footer from '../components/footer';
 import LoginModal from "../components/loginModal";

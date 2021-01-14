@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import axios from "axios";
+import PropTypes from "prop-types";
 import {
   TileLayer,
   Map,
@@ -14,15 +17,7 @@ import {
     FormGroup,
     Label,
     Input,
-    NavLink,
-    Alert,
-    FormFeedback, //added
-    FormText,
-    Progress,
-    CardText // added
 } from 'reactstrap';
-import { connect } from 'react-redux';
-import axios from "axios";
 
 import { Icon } from "../components/markerIcon";
 import NavBar from '../components/navBar';
@@ -63,6 +58,17 @@ class MyMap extends Component{
                     data
                 });
             })
+    }
+    componentDidUpdate(){
+        if(this.state.addMarker !== {}){
+            this.props.getHouses()
+            .then(data => {
+                this.setState({
+                    ...this.state,
+                    data
+                });
+            })
+        }
     }
     toggle(){
         this.props.clearErrors();
@@ -122,24 +128,7 @@ class MyMap extends Component{
         const description = this.state.description;
         const userId = this.props.user.user.id;
         this.props.registerHouse({strAdd, lat, lng, pictureLink, description, userId});
-
-        var dateObj = new Date();
-        var month = dateObj.getUTCMonth() + 1; 
-        var day = dateObj.getUTCDate();
-        var year = dateObj.getUTCFullYear();
-        var newdate = year + "/" + month + "/" + day;
-        let data = this.state.data;
-        const house = {
-            address: strAdd,
-            latitude: lat,
-            longitude: lng,
-            pictureLink: pictureLink,
-            description: description,
-            date: newdate,
-        }
-        data.push(house);
         this.setState({
-            data: data,
             modalOpen: false,
         });
     }

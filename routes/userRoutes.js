@@ -89,28 +89,20 @@ router.get('/:userId', auth, (req, res) => {
 });
 
 router.put('/:userId', (req, res) => {
-    console.log("req params"); 
-    console.log(req.params);
-    if (!req.params.userId) {
-        return res.status(400).json({msg: 'User does not exist'});
-    }
-
+    console.log("test")
     console.log(req.body);
-    console.log("at put"); 
-    console.log(req.user)
-    const { firstName, lastName, email, companyId,  /*, userId */ } = req.body;
+    const { id, name, role, bio } = req.body;
     //const userId = req.user.id;
 
-    console.log("updating"); 
-    
+    console.log(role);
+    // if(role != "Home Owner" || role != "Appraiser"){
+    //     return res.status(400).json({msg: 'Invalid role/usertype'});
+    // }
 
-    Employer.findByIdAndUpdate(req.params.userId, {
-        avatar,
-        companyId,
-        email,
-        firstName,
-        lastName,
-        
+    User.findByIdAndUpdate(req.params.userId, {
+        name: name,
+        userType: role,
+        bio: bio,
     }, (err) => {
         console.log(err); 
         console.log("updated"); 

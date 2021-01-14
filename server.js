@@ -3,9 +3,6 @@ const express = require("express");
 const mongoose = require("mongoose");
 const path =  require("path");
 const config = require("config");
-var fs = require('fs');
-var multer = require('multer');
-
 
 const app = express();
 
@@ -18,27 +15,16 @@ mongoose.connect(db, { useUnifiedTopology: true, useNewUrlParser: true })
     })
     .catch(function(err){
         console.log(err);
-    })
+})
 
 app.use(express.json());
 
+app.use('uploads', express.static('uploads'));
 app.use('/api/product', require('./routes/productRoutes'));
 app.use('/api/user', require('./routes/userRoutes'));
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/house', require('./routes/houseRoutes'));
-// app.use('/api/image', require("./routes/imageRoutes"));
-
-var storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, 'uploads')
-    },
-    filename: (req, file, cb) => {
-        cb(null, file.fieldname + '-' + Date.now())
-    }
-});
- 
-var upload = multer({ storage: storage });
-
+app.use('/api/image', require("./routes/imageRoutes"));
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'));
