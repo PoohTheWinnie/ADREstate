@@ -247,6 +247,15 @@ p {
   width: 100%;
 }
 
+.housePopup{
+  height: 300px;
+}
+
+.houseDescription{
+  text-align: center;
+}
+
+
 /*Profile*/
 .profileContent{
   height: 78vh;
@@ -260,7 +269,10 @@ p {
 .profile .image{
   width: 300px;
   height: 300px;
-  margin: 20px 123px;
+  margin: 20px auto;
+  border-radius: 150px;
+  background-size: 300px 300px;
+  /* margin: 20px 123px; */
 }
 
 .icon{
