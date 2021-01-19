@@ -73,7 +73,7 @@ class Login extends Component {
         return(
             <div>
                 <div className="Introduction">
-                    <h2>Welcome to ADREstate</h2>
+                    <h2>Welcome</h2>
                 </div>
                 <div>
                     { this.state.msg ? 

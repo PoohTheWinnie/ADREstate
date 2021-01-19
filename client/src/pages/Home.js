@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {
     Col,
+    Row,
 } from 'reactstrap';
 import Image from 'react-bootstrap/Image';
 import PropTypes from 'prop-types';
@@ -8,7 +9,8 @@ import { connect } from 'react-redux';
 import { Fade } from "react-slideshow-image";
 import { Icon } from '@iconify/react';
 import lawIcon from '@iconify-icons/whh/law';
-import mapIcon from '@iconify-icons/carbon/map'
+import mapIcon from '@iconify-icons/carbon/map';
+import connectIcon from '@iconify-icons/carbon/connect';
 import 'react-slideshow-image/dist/styles.css';
 
 import NewYork from "../images/New York.png";
@@ -26,6 +28,7 @@ class Home extends Component{
         auth: PropTypes.object.isRequired
     }
     render(){
+        console.log("hello")
         const { isAuthenticated, user } = this.props.auth;
         const cities = [
             "New York",
@@ -47,18 +50,29 @@ class Home extends Component{
                 </div>
                 <div className="SectionFeatures">
                     <div className="Features">
-                        <h2 className="FeaturesLabel">Features</h2>
-                        <br/>
-                        <div className="ListFeatures">
-                            <div className="Item">
-                                <Icon icon={lawIcon} className="FeatureIcon"/>
-                                <h4 className="UserTypeText">Easily challenge your home appraisal</h4>
-                            </div>
-                            <div>
-                                <Icon icon={mapIcon} className="FeatureIcon"/>
-                                <h4 className="UserTypeText">Check and compare the value of other homes</h4>
-                            </div>
-                        </div>
+                        <Row>
+                            <Col md="4">
+                                <div class="mx-auto mb-5 mb-lg-0 mb-lg-3">
+                                    <div class="d-flex"><i class="m-auto"><Icon icon={lawIcon} className="FeatureIcon"/></i></div>
+                                    <h3>Easily Challenge Your Appraisal</h3>
+                                    <p class="lead mb-0">Request for a redo and get a second opinion on your home!</p>
+                                </div>
+                            </Col>
+                            <Col md="4">
+                                <div class="mx-auto mb-5 mb-lg-0 mb-lg-3">
+                                    <div class="d-flex"><i class="m-auto"><Icon icon={mapIcon} className="FeatureIcon"/></i></div>
+                                    <h3>Look At Other Homes in the Area</h3>
+                                    <p class="lead mb-0">Check and compare the value of other homes with our user friendly interface</p>
+                                </div>
+                            </Col>
+                            <Col md="4">
+                                <div class="mx-auto mb-5 mb-lg-0 mb-lg-3">
+                                    <div class="d-flex"><i class="m-auto"><Icon icon={connectIcon} className="FeatureIcon"/></i></div>
+                                    <h3>Connect With Your Appraiser</h3>
+                                    <p class="lead mb-0">Anonymity will be preserved until your appraiser gives a decision.  Only then will the two parties will be able to communicate.</p>
+                                </div>
+                            </Col>
+                        </Row>
                     </div>
                 </div>
             </div>
@@ -85,10 +99,13 @@ class Home extends Component{
             <div>
                 <div className="SectionSignLog">
                     <div className="SignLog">
-                        <div>
+                        <Row>
                             <Image className="ImageSign" src= {MapSmall} roundedCircle/>
-                        </div>
-                        <LoginModal/>
+                            <Col md="4" className="Modal">
+                                <LoginModal/>
+                            </Col>
+                            
+                        </Row>
                     </div>
                 </div>
             </div>

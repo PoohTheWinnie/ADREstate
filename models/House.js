@@ -21,6 +21,18 @@ const HouseSchema = new Schema({
     description:{
         type: String
     },
+    bedrooms:{
+        type: Number
+    },
+    bathrooms:{
+        type: Number
+    },
+    amenities:{
+        type:String
+    },
+    squareFeet:{
+        type: Number,
+    },
     date:{
         type: String,
         default: Date.now
@@ -30,12 +42,19 @@ const HouseSchema = new Schema({
         default: false
     },
     value: {
-        type: Number
+        type: Number,
+        default: 0
+    },
+    valueReasoning:{
+        type: String
     },
     postedBy:{
         type: String
     },
     reviewedBy:{
+        type: String
+    },
+    secondReview:{
         type: String
     }
 });

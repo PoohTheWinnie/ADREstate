@@ -1,6 +1,6 @@
 import Leaflet from "leaflet";
 
-export const Icon = Leaflet.icon({
+export const customIcon = Leaflet.icon({
     iconSize: [25, 41],
     iconAnchor: [10, 41],
     popupAnchor: [2, -40],

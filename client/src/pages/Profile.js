@@ -23,6 +23,7 @@ import { getHousesInd } from "../actions/houseActions";
 import { getImage } from "../actions/imageActions";
 import NavBar from '../components/navBar';
 import Footer from '../components/footer';
+import ChatApp from "../components/chatApp";
 
 class Profile extends Component{
     static propTypes = {
@@ -47,6 +48,8 @@ class Profile extends Component{
     }
     componentDidMount() {
         const userId = this.props.user.user.id;
+        const type = this.props.user.user.userType;
+        console.log(type);
         console.log(userId);
         this.props.getUser(userId)
             .then(res => {
@@ -60,7 +63,7 @@ class Profile extends Component{
                     bio: res.bio,
                 })
             })
-        this.props.getHousesInd(userId)
+        this.props.getHousesInd({userId, type})
             .then(houses => {
                 if(!houses){
                     throw new Error("Server Error");
@@ -73,7 +76,7 @@ class Profile extends Component{
         this.props.getImage(userId)
             .then(res => {
                 if(!res){
-                    throw new Error("Server Error");
+                    console.log("no image yet");
                 }
                 this.setState({
                     // image: URL.createObjectURL(`../${res.image}`)
@@ -217,6 +220,7 @@ class Profile extends Component{
                         <br/>
                     </div>
                     <profileImageModal/>
+                    <ChatApp/>
                 </div>
                 <div className="footer">
                     <Footer/>

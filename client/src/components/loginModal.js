@@ -26,11 +26,11 @@ class LoginModal extends Component{
     render(){
         return(
             <div>
-                <Col md="12" className="Modal">
+                <Col md="12">
                     <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="horizontal">
                         <div className="FrontSide">
                             <Login/>
-                            <p>New User?<Button color="link" onClick={this.handleClick} className="SignUpButton">Sign Up</Button></p>
+                            <p><Button color="link" onClick={this.handleClick} className="SignUpButton">New User? Sign Up</Button></p>
                         </div>
                         <div className="BackSide">
                             <Signup/>

@@ -31,7 +31,7 @@ p {
 }
 
 .nav-item {
-  margin-right: 20px;
+  margin-left: 20px;
   color: #5c5c5b;
 }
 
@@ -124,7 +124,7 @@ p {
 
 .ImageSign{
   width: 50%;
-  margin: auto;
+  margin-right: 210px;
 }
 
 .Modal{
@@ -180,8 +180,8 @@ p {
   margin-right: auto;
 }
 
-.ListFeatures{
-  margin: 0;
+.Features h3{
+  text-align: center;
 }
 
 .FeatureIcon{
@@ -189,8 +189,17 @@ p {
   height: 8em;
   margin-top: 20px;
   margin-bottom: 20px;
-  margin-left: 580px;
+  color: #0967c2;
+  /* margin-left: 230px; */
 }
+
+.featureText{
+  text-align: left;
+}
+
+/* .featImage{
+  background-image: url("https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fspecials-images.forbesimg.com%2Fdam%2Fimageserve%2F1132721566%2F960x0.jpg%3Ffit%3Dscale&quot");
+} */
 
 
 /*Login*/
@@ -242,16 +251,53 @@ p {
 }
 
 /*Map*/
-.Map{
+
+
+.mapContent{
+  display: flex;
+  flex-direction: row;
+  border-top: 2px solid #5c5c5b;
+  border-bottom: 2px solid #5c5c5b;
+}
+
+.moreInfoButton{
+  margin-top: 40px;
+}
+
+.registerModal{
+  position: absolute;
+  top: 20%;
+}
+
+
+/* House Info*/
+
+.moreInfo{
   height: 78vh;
-  width: 100%;
+  width: 600px;
+  margin: 0;
 }
 
-.housePopup{
-  height: 300px;
+.houseImages{
+  height: 340px;
+  width: 600px;
 }
 
-.houseDescription{
+.houseIcon{
+  width: 3em;
+  height: 3em;
+}
+
+hr{
+  height: 20px;
+  color: #1e1e1e;
+}
+
+.address{
+  margin-top: 20px;
+}
+
+.appraiseButton{
   text-align: center;
 }
 

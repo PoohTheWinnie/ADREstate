@@ -34,6 +34,7 @@
     "reactstrap": "^8.8.1",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
+    "talkjs": "^0.14.3",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
@@ -64,7 +65,9 @@
   "devDependencies": {
     "@iconify-icons/bi": "^1.1.0",
     "@iconify-icons/carbon": "^1.1.1",
+    "@iconify-icons/cil": "^1.1.0",
     "@iconify-icons/fa-solid": "^1.1.0",
+    "@iconify-icons/raphael": "^1.1.0",
     "@iconify-icons/whh": "^1.1.0",
     "@iconify/icons-emojione-monotone": "^1.1.0",
     "@iconify/icons-ic": "^1.1.1",

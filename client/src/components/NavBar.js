@@ -40,12 +40,12 @@ class NavBar extends Component {
             <Fragment>              
                 <NavItem>
                     <NavLink>
-                        <Link to="/Map">Map</Link>
+                        <Link to="/Map"><strong>MAP</strong></Link>
                     </NavLink> 
                 </NavItem>
                 <NavItem>
                     <NavLink>
-                        <Link to="/Profile/:id">Profile</Link>
+                        <Link to="/Profile/:id"><strong>PROFILE</strong></Link>
                     </NavLink> 
                 </NavItem>
                 <NavItem>

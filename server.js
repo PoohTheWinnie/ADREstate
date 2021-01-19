@@ -9,7 +9,8 @@ const app = express();
 // mongoose.Promise = global.Promise;
 const db = config.get('mongoURI');
 
-mongoose.connect(db, { useUnifiedTopology: true, useNewUrlParser: true })
+mongoose.set('useFindAndModify', false);
+mongoose.connect(db, { useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false })
     .then(function(){
         console.log("Connection successful!");
     })
