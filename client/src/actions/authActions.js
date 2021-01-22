@@ -79,6 +79,7 @@ export const login = ({ email, password }) => dispatch => {
 
 // Logout user
 export const logout = () => {
+    console.log("Logout")
     return {
         type: LOGOUT_SUCCESS
     }
@@ -86,18 +87,18 @@ export const logout = () => {
 
 //Setup config/headers and token
 export const tokenConfig = getState => {
-        // Get token from local storage
-        const token = getState().auth.token;
+    // Get token from local storage
+    const token = getState().auth.token;
 
-        const config = {
-            headers: {
-                "Content-type": "application/json"
-            }
+    const config = {
+        headers: {
+            "Content-type": "application/json"
         }
-    
-        //If token, add to headers
-        if(token) {
-            config.headers['x-auth-token'] = token;
-        }
+    }
+
+    //If token, add to headers
+    if(token) {
+        config.headers['x-auth-token'] = token;
+    }
     return config;
 }

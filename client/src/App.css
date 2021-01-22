@@ -197,11 +197,6 @@ p {
   text-align: left;
 }
 
-/* .featImage{
-  background-image: url("https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fspecials-images.forbesimg.com%2Fdam%2Fimageserve%2F1132721566%2F960x0.jpg%3Ffit%3Dscale&quot");
-} */
-
-
 /*Login*/
 .LoginSubmit{
   width: 100%;
@@ -230,16 +225,7 @@ p {
   flex-direction: row;
 }
 
-.UserTypeSelection{
-  width: 50%;
-}
-
-.UserTypeText{
-  text-align: center;
-  
-}
 .UserIcon {
-  margin: 0px 27px;
   width: 5em;
   height: 5em;
 }
@@ -251,8 +237,6 @@ p {
 }
 
 /*Map*/
-
-
 .mapContent{
   display: flex;
   flex-direction: row;
@@ -303,39 +287,33 @@ hr{
 
 
 /*Profile*/
-.profileContent{
-  height: 78vh;
-  background-color: #f1ece6;
-}
-
 .profileCard{
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.profile .image{
+.profilePicture{
   width: 300px;
   height: 300px;
-  margin: 20px auto;
-  border-radius: 150px;
-  background-size: 300px 300px;
-  /* margin: 20px 123px; */
-}
-
-.icon{
-  font-size: 300px;
-  margin: 20px 123px;
-}
-
-.houseCard{
-  width: 100%;
-  margin-bottom: 20px;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 .subtitleHouse{
   font-family: 'Montserrat', sans-serif;
   font-size: 16px;
   text-align: left;
+  text-decoration: underline;
 }
 .postedDate{
   float: right;
+  text-decoration: underline;
+}
+
+.chatbox-container {
+  position: absolute;
+  bottom: 0;
+  height: 400px;
+  right: 5%;
+  width: 300px;
 }

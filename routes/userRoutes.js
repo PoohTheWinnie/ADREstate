@@ -17,7 +17,6 @@ router.post('/', (req, res) => {
     const { name, email, password, userType } = req.body;
     const bio = `My name is ${name}`;
     const image = null;
-    console.log("User Routes")
 
     //simple validation
     if(!name || !email || !password || !userType) {
@@ -73,7 +72,6 @@ router.post('/', (req, res) => {
     });
 
 router.get('/:userId', auth, (req, res) => {
-    console.log(req.params);
     if (!req.params.userId) {
         return res.status(400).json({msg: 'User does not exist'});
     }
@@ -82,22 +80,12 @@ router.get('/:userId', auth, (req, res) => {
         if (!user) {
             return res.status(400).json({msg: 'User does not exist'});
         }
-        console.log("get User"); 
-        console.log(user);
         return res.json(user);
     });
 });
 
 router.put('/:userId', (req, res) => {
-    console.log("test")
-    console.log(req.body);
-    const { id, name, role, bio } = req.body;
-    //const userId = req.user.id;
-
-    console.log(role);
-    // if(role != "Home Owner" || role != "Appraiser"){
-    //     return res.status(400).json({msg: 'Invalid role/usertype'});
-    // }
+    const { name, role, bio } = req.body;
 
     User.findByIdAndUpdate(req.params.userId, {
         name: name,
@@ -105,7 +93,6 @@ router.put('/:userId', (req, res) => {
         bio: bio,
     }, (err) => {
         console.log(err); 
-        console.log("updated"); 
     } )
     
 });

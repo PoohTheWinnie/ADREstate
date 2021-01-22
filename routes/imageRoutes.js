@@ -8,7 +8,7 @@ var Image = require('../models/image');
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, './client/src/uploads/');
+        cb(null, '/Users/winston/Documents/Programming/WebDevelopment/Test/uploads/');
     },
     filename: function (req, file, cb) {
         cb(null, Date.now() + file.originalname);
@@ -40,12 +40,22 @@ const upload = multer({
 router.route("/")
     .post(upload.single('imageData'), (req, res, next) => {
         console.log(req.body);
-        const newImage = new Image({
-            type: req.body.type,
-            userId: req.body.userId,
-            image: req.file.path
-        });
-
+        let newImage
+        if (req.body.type === "Profile"){
+            newImage = new Image({
+                type: req.body.type,
+                address: "",
+                userId: req.body.userId,
+                image: req.file.path
+            });
+        }else{
+            newImage = new Image({
+                type: req.body.type,
+                address: req.body.address,
+                userId: req.body.userId,
+                image: req.file.path
+            });   
+        }
         newImage.save()
             .then((result) => {
                 console.log(result);
@@ -55,23 +65,33 @@ router.route("/")
                 });
             })
             .catch((err) => next(err));
-    });
+});
 
-
-router.get('/:userId', (req, res) => {
-    console.log("Request is");
-    console.log(req.params.userId);
-    
-    Image.find({ userId: req.params.userId }, (err, items) => {
-        if (err) {
-            console.log(err);
-        }
-        else {
-            console.log("Hello");
-            console.log(items);
-            return res.json(items[0]);
-        }
-    });
+router.get('/:userId', (req, res) => {    
+    console.log(req.query);
+    const { type, address } = req.query;
+    // console.log("Info", type, address);
+    if (type == "Profile"){
+        Image.find({ userId: req.params.userId, type: type }, (err, items) => {
+            if (err) {
+                console.log(err);
+            }
+            else {
+                console.log(items);
+                return res.json(items[items.length - 1]);
+            }
+        });
+    }else{
+        Image.find({ userId: req.params.userId, type: type, address: address }, (err, items) => {
+            if (err) {
+                console.log(err);
+            }
+            else {
+                console.log(items);
+                return res.json(items);
+            }
+        });
+    }
 });
 
 module.exports = router;

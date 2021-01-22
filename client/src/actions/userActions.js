@@ -3,7 +3,6 @@ import { tokenConfig } from './authActions';
 import { returnErrors } from './errorActions';
 
 export const registerUser = function (user) {
-    console.log("called register");
     return function (dispatch, getState) {
         return axios.post('/api/users', user, tokenConfig(getState))
             .then(res => res.data)
@@ -24,10 +23,6 @@ export const getUser = function (userId) {
 };
 
 export const updateUser = function(user){
-    console.log("get id"); 
-    console.log(user); 
-    console.log(user.id);
-    
     return function (dispatch, getState) {
         return axios.put(`/api/user/${user.id}`, user, tokenConfig(getState))
             .then(res => res.data)

@@ -51,7 +51,13 @@ const HouseSchema = new Schema({
     postedBy:{
         type: String
     },
+    postedName:{
+        type: String
+    },
     reviewedBy:{
+        type: String
+    },
+    reviewedName:{
         type: String
     },
     secondReview:{

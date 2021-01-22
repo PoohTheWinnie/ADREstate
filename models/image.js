@@ -5,6 +5,9 @@ var ImageSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    address:{
+        type: String,
+    },
     userId: {
         type: String,
         required: true

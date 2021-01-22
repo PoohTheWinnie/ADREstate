@@ -36,7 +36,6 @@ class SignUp extends Component {
         confirm_password: '', //changes
         userType: '',
         msg: null,
-        userType: '',
         valid_password: null,
         invalid_password: null,
         feedback: '',
@@ -76,7 +75,6 @@ class SignUp extends Component {
           confirm_password: '', //changes
           userType: '',
           msg: null,
-          userType: '',
           valid_password: null,
           invalid_password: null,
           feedback: '',
@@ -96,7 +94,7 @@ class SignUp extends Component {
 
     setColor = (position) => {
         if (this.state.active === position) {
-            return "#f15e51";
+            return "#0967c2";
         }
             return "black";
       }
@@ -154,17 +152,16 @@ class SignUp extends Component {
                     </Alert> : null }
                 <Form onSubmit={this.onSubmit}>
                     <FormGroup>
-                        {/* <Label for="UserType">User Type</Label> */}
-                            <div className="UserType">
-                                <div className="UserTypeSelection">
-                                    <IconButton style={{color: this.setColor(0)}} onClick={() => {this.handleUserType("Home Owner", 0)}}><Icon value="Home Owner" icon={houseUser} className="UserIcon"/></IconButton>
-                                    <CardText className="UserTypeText">Home Owner</CardText>
-                                </div>
-                                <div className="UserTypeSelection">
-                                    <IconButton style={{color: this.setColor(1)}} onClick={() => {this.handleUserType("Appraiser", 1)}}><Icon value="Appraiser" icon={roundBusinessCenter} className="UserIcon"/></IconButton>
-                                    <CardText className="UserTypeText">Appraiser</CardText>
-                                </div>
-                            </div>
+                        <div className="UserType">
+                          <div style={{ width: "50%"}}>
+                              <div class="d-flex"><i class="m-auto"><IconButton style={{color: this.setColor(0)}} onClick={() => {this.handleUserType("Home Owner", 0)}}><Icon value="Home Owner" icon={houseUser} className="UserIcon"/></IconButton></i></div>
+                              <CardText className="text-center">Home Owner</CardText>
+                          </div>
+                          <div style={{ width: "50%"}}>
+                              <div class="d-flex"><i class="m-auto"><IconButton style={{color: this.setColor(1)}} onClick={() => {this.handleUserType("Appraiser", 1)}}><Icon value="Appraiser" icon={roundBusinessCenter} className="UserIcon"/></IconButton></i></div>
+                              <CardText className="text-center">Appraiser</CardText>
+                          </div>
+                        </div>
                         <FormText> {this.state.user_type_feedback} </FormText>
                         <Label for="name">Name</Label>
                             <Input type="text" name="name" id="name" placeholder="Name" className="mb-3" onChange={this.onChange}/>

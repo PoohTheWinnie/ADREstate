@@ -28,8 +28,7 @@ class Home extends Component{
         auth: PropTypes.object.isRequired
     }
     render(){
-        console.log("hello")
-        const { isAuthenticated, user } = this.props.auth;
+        const isAuthenticated = this.props.auth.isAuthenticated;
         const cities = [
             "New York",
             "Boston",
@@ -81,16 +80,16 @@ class Home extends Component{
             <div className="slide-container">
                 <Fade>
                     <div className="each-fade">
-                        <img className="Image" src={NewYork} />
+                        <Image className="Image" src={NewYork} />
                     </div>
                     <div className="each-fade">
-                        <img className="Image" src={Boston} />
+                        <Image className="Image" src={Boston} />
                     </div>
                     <div className="each-fade">
-                        <img className="Image" src={LosAngeles} />
+                        <Image className="Image" src={LosAngeles} />
                     </div>
                     <div className="each-fade">
-                        <img className="Image" src={London} />
+                        <Image className="Image" src={London} />
                     </div>
                 </Fade>
             </div>

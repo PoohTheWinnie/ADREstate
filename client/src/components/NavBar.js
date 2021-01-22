@@ -7,7 +7,6 @@ import {
     Nav,
     NavItem,
     NavLink,
-    Container
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -45,7 +44,7 @@ class NavBar extends Component {
                 </NavItem>
                 <NavItem>
                     <NavLink>
-                        <Link to="/Profile/:id"><strong>PROFILE</strong></Link>
+                        <Link to="/Profile"><strong>PROFILE</strong></Link>
                     </NavLink> 
                 </NavItem>
                 <NavItem>
@@ -62,19 +61,17 @@ class NavBar extends Component {
         );
 
         return(
-            <div class="SectionNavBar">
+            <div className="SectionNavBar">
                 <Navbar expand="sm" className="NavBar">
-                    {/* <Container className="NavContainer"> */}
-                        <NavbarBrand href="/">
-                            <h1 className="ProductName"><strong>ADREstate</strong></h1>
-                        </NavbarBrand>
-                        <NavbarToggler onClick={this.toggle}/>
-                        <Collapse isOpen={this.state.isOpen} navbar>
-                            <Nav className="ml-auto" navbar>
-                                { isAuthenticated ? authLinks : guestLinks }
-                            </Nav>
-                        </Collapse>
-                    {/* </Container> */}
+                    <NavbarBrand href="/">
+                        <h1 className="ProductName"><strong>ADREstate</strong></h1>
+                    </NavbarBrand>
+                    <NavbarToggler onClick={this.toggle}/>
+                    <Collapse isOpen={this.state.isOpen} navbar>
+                        <Nav className="ml-auto" navbar>
+                            { isAuthenticated ? authLinks : guestLinks }
+                        </Nav>
+                    </Collapse>
                 </Navbar>
             </div>
         );
