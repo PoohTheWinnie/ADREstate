@@ -297,7 +297,7 @@ class Profile extends Component{
                                     {this.state.image != null ? (
                                         <div className="d-flex my-3">
                                             <i className="m-auto text-center">
-                                                <Image src= {require(`/Users/winston/Documents/Programming/WebDevelopment/Test/uploads/${this.state.image}`)} className="profilePicture" alt="Fail" onClick={this.openModal} roundedCircle/>
+                                                <Image src= {require(`/Users/winston/Documents/Programming/WebDevelopment/ADREstate/uploads/${this.state.image}`)} className="profilePicture" alt="Fail" onClick={this.openModal} roundedCircle/>
                                                 <br/>
                                                 <h3><strong>{this.state.name}</strong></h3>
                                             </i>

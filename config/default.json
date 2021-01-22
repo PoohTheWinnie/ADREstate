@@ -1,5 +1,5 @@
 {
-    "mongoURI": "mongodb+srv://WinstonCai:rY93A525jOjEipIk@cluster0.d7l7g.mongodb.net/FirstImplementation?retryWrites=true&w=majority",
+    "mongoURI": "mongodb+srv://WinstonCai:rY93A525jOjEipIk@cluster0.d7l7g.mongodb.net/ADREstate?retryWrites=true&w=majority",
     "jwtSecret": "ip_myJwtSecret"
 }
 

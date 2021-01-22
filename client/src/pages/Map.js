@@ -88,7 +88,7 @@ class MyMap extends Component{
                 });
             })
     }
-    componentDidMount(){
+    async componentDidMount(){
         const type = this.props.user.user.userType;
         const userId = this.props.user.user.id;
         const name = this.props.user.user.name;
@@ -308,7 +308,7 @@ class MyMap extends Component{
                             <Fade>
                                 {this.state.houseImages.map((image, idx) => 
                                     <div className="each-fade">
-                                        <Image className="houseImages" src= {require(`/Users/winston/Documents/Programming/WebDevelopment/Test/uploads/${image.image.split("/")[image.image.split("/").length - 1]}`)}/>
+                                        <Image className="houseImages" src= {require(`/Users/winston/Documents/Programming/WebDevelopment/ADREstate/uploads/${image.image.split("/")[image.image.split("/").length - 1]}`)}/>
                                     </div>
                                 )}
                             </Fade>

@@ -1,14 +1,13 @@
 
 const express = require('express');
 const multer = require('multer');
-// const auth = require("../middleware/auth");
 const router = express.Router();
 
 var Image = require('../models/image');
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, '/Users/winston/Documents/Programming/WebDevelopment/Test/uploads/');
+        cb(null, '/Users/winston/Documents/Programming/WebDevelopment/ADREstate/uploads/');
     },
     filename: function (req, file, cb) {
         cb(null, Date.now() + file.originalname);
@@ -70,7 +69,6 @@ router.route("/")
 router.get('/:userId', (req, res) => {    
     console.log(req.query);
     const { type, address } = req.query;
-    // console.log("Info", type, address);
     if (type == "Profile"){
         Image.find({ userId: req.params.userId, type: type }, (err, items) => {
             if (err) {

@@ -14,18 +14,6 @@ export const uploadImage = function(imageFormObj) {
     }
 }
 
-// export const uploadImageHouse = function(imageFormObj) {
-//     return async function (dispatch, getState) {
-//         return await axios.post('/api/image/house', imageFormObj, tokenConfig(getState))
-//             .then(res => res.data)
-//             .catch(function(err) {
-//                 console.log("Error Failed Upload Image");
-//                 console.log(err.response);
-//                 dispatch(returnErrors(err.response.data, err.response.status));
-//             });
-//     }
-// }
-
 export const getImage = function ({userId, type, address}) {
     return async function (dispatch, getState) {
         console.log("Info",userId, type, address);
