@@ -195,10 +195,9 @@ class MyMap extends Component{
             this.props.uploadImage(imageFormObj);
         }
     }
-    loadImages(e, address){
+    loadImages(e, address, postedBy){
         e.preventDefault()
-        const userId = this.props.user.user.id;
-        this.props.getImage({ userId: userId, type: "House", address: address })
+        this.props.getImage({ userId: postedBy, type: "House", address: address })
             .then(houseImages => {
                 if(!houseImages){
                     console.log("no image yet");
@@ -294,7 +293,7 @@ class MyMap extends Component{
                                                 (<Button value={house} onClick={() => this.setState( {getMoreInfo: false })}>Close More Info</Button>) :
                                                 (<Button value={house} onClick={(e) => {
                                                     this.setState( {getMoreInfo: true, currHouse: house });
-                                                    this.loadImages(e, house.address);
+                                                    this.loadImages(e, house.address, house.postedBy);
                                                 }}>Get More Info</Button>)
                                             }
                                         </div>

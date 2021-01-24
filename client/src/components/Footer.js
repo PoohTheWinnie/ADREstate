@@ -50,8 +50,8 @@ class Footer extends Component {
                     </Row>
                     <Row>
                         <Col className="terms">
-                            <p>Winston | Cai</p>
-                            <p>© 2020 ADREstate, A Winstonian Corporation, New York City</p>
+                            <p>Winston Cai | James Chu</p>
+                            <p>© 2020 ADREstate</p>
                         </Col>
                     </Row>
                 </Container>
